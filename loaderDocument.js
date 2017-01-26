@@ -18,6 +18,20 @@
 function LoaderDocument(baseElement) {
 	this.baseElement=baseElement||document.head;
 }
+LoaderDocument.prototype.loadInnerHMTL = function(url,callBack,callBackObject,callBackArgs) {
+		var thisObject=this, xhr = new XMLHttpRequest();
+		xhr.open('get', url, true);
+		xhr.responseType = 'text';
+		xhr.onload = function() {
+			if (xhr.status == 200) {
+				thisObject.baseElement.innerHTML=xhr.response;
+				if(callBack)
+					callBack.apply(callBackObject,[xhr.response].concat(callBackArgs));
+			} else
+			console.error("LoaderDocument error loading "+url+" status: "+xhr.status);
+		};
+		xhr.send();
+	};
 LoaderDocument.prototype.load = function(url,callBack,callBackObject,callBackArgs) {
 	console.log("LoaderDocument load "+url);
 	var elementType = (url.match(/[^\\\/]\.([^.\\\/]+)$/) || [null]).pop();
@@ -25,6 +39,10 @@ LoaderDocument.prototype.load = function(url,callBack,callBackObject,callBackArg
 		console.log("LoaderDocument already loaded "+url);
 		if(callBack)
 			callBack.apply(callBackObject,callBackArgs);
+		return;
+	}
+	if(elementType==null) {
+		this.loadInnerHMTL(url,callBack,callBackObject,callBackArgs));
 		return;
 	}
 	var thisObject=this
