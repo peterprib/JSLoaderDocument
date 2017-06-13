@@ -1,5 +1,5 @@
-{ "name": "JSLoaderDocument"
+{ "name": "loaderDocument"
 , "description": "Dynamic loader for documents"
 ,"version": "0.0.1"
-,"main": "JSLoaderDocument.js"
+,"main": "loaderDocument.js"
 }
