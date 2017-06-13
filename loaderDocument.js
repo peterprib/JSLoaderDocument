@@ -42,7 +42,7 @@ LoaderDocument.prototype.load = function(url,callBack,callBackObject,callBackArg
 		return;
 	}
 	if(elementType==null) {
-		this.loadInnerHMTL(url,callBack,callBackObject,callBackArgs));
+		this.loadInnerHMTL(url,callBack,callBackObject,callBackArgs);
 		return;
 	}
 	var thisObject=this
