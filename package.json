@@ -2,4 +2,7 @@
 , "description": "Dynamic loader for documents"
 ,"version": "0.0.1"
 ,"main": "loaderDocument.js"
+,"bin": {
+	"test": "./index.js"
+	}
 }

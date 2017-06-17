@@ -53,8 +53,8 @@ LoaderDocument.prototype.load = function(url,callBack,callBackObject,callBackArg
 			fileElement.src = url;
 			break;
 		case 'css':
-            fileref.setAttribute("rel", "stylesheet")
-            fileref.setAttribute("href", filename)
+            fileElement.setAttribute("rel", "stylesheet")
+            fileElement.setAttribute("href", url)
 			break;
 	}
 	fileElement.onload = function () {
